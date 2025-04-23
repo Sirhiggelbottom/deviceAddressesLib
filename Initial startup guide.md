@@ -140,3 +140,64 @@ This will create a new sheet containing every valid KNX address like shown in th
 The addresses are formatted so that you can just copy and paste them into a lua table.
 
 ![image](./Images/image_7.png)
+
+### Adding The Addresses To A Static Project List:
+
+The list of addresses can be added to a static project list like this:
+
+```lua
+devices = require('user.deviceAddressesLib')
+
+local my_list = {
+    '0.0.0',
+    '0.0.1',
+    '0.0.2',
+    '0.0.3',
+    '0.0.4',
+    '0.0.5',
+    '0.0.6',
+    '0.0.7',
+    '0.0.8',
+    '0.0.9'
+}
+
+local projectName = 'my_project'
+
+devices.add_static_list(projectName, my_list)
+
+log(devices.get_static_list(projectName))
+```
+
+#### Output:
+
+    '0.0.0',
+    '0.0.1',
+    '0.0.2',
+    '0.0.3',
+    '0.0.4',
+    '0.0.5',
+    '0.0.6',
+    '0.0.7',
+    '0.0.8',
+    '0.0.9'
+
+
+No we have a static project list called my_project.
+We can use this list to restart every online KNX device within this list using:
+
+[devices.restart(project)](README.md#restart)
+
+Like so:
+
+```lua
+local result = devices.restart(projectName)
+
+if result == nil then -- Checks specifically for a nil (Means that the project doesn't exist)
+    log("Error, project doesn't exist")
+elseif result then
+    log("Every KNX device has been restarted")
+elseif not result then
+    log("There were some devices that didn't restart")
+end
+
+```
