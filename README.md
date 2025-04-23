@@ -11,7 +11,7 @@
 ### Utility functions:
 ___
 
-- <a name="scan_all_hdr"></a><h4>[devices.scan_all_devices() => void](/README.md#scan_all)</h4>
+<a name="scan_all_hdr"></a><h4>- [devices.scan_all_devices() => void](/README.md#scan_all)</h4>
 
   <p>Iterates through every valid KNX device address with 3 seconds intervals and pings it.<br>
   If there is a response, it's saved to a list and then stored.<br>The 3 second delay is choosen in order to decrease the load on the KNX bus, the bus load increases by about 8% while the scan is active.<br><br>
@@ -22,7 +22,7 @@ ___
   Because of this, it's recommended to create a separate script for this function alone.</p>
 ___
 
-- <a name="convert_hdr"></a><h4>[devices.byte4_uint_to_address(value) (4 byte UINT) => string / nil](/README.md#convert)</h4>
+<a name="convert_hdr"></a><h4>- [devices.byte4_uint_to_address(value) (4 byte UINT) => string / nil](/README.md#convert)</h4>
 
   <p>Takes 1 parameter (4 byte UNIT) and converts it into a valid KNX Device Address or nil (if the KNX Device Address is invalid).<br>
   The last 3 digits is used to specify how many digits there are for each address component (Area/Line/Device).<br><br>
@@ -30,7 +30,7 @@ ___
   For readability I recommend writing the address value as such: 15 15 255 2 2 3, instead of: 15152552223. ETS will automatically format the value.</p>
 ___
 
-- <a name="ping_hdr"></a><h4>[devices.ping(project) (string) =>  table(string)](/README.md#ping)</h4>
+<a name="ping_hdr"></a><h4>- [devices.ping(project) (string) =>  table(string)](/README.md#ping)</h4>
 
   Pings every address from the choosen static project.
   Every successfull ping is added to a list.
@@ -38,7 +38,7 @@ ___
   The list is also returned as a result.
 ___
 
-- <a name="restart_hdr"></a><h4>[devices.restart(project) (string) => nil / boolean](/README.md#restart)</h4>
+<a name="restart_hdr"></a><h4>- [devices.restart(project) (string) => nil / boolean](/README.md#restart)</h4>
 
   Restarts every device in the choosen dynamic device list and returns either:<br>
   <p>
@@ -58,47 +58,48 @@ ___
 ### Static functions:
 ___
 
-- <a name="get_static_hdr"></a><h4>[devices.get_static_list(project) (string) => table(string) / nil](/README.md#get_static)</h4>
+<a name="get_static_hdr"></a><h4>- [devices.get_static_list(project) (string) => table(string) / nil](/README.md#get_static)</h4>
   Takes 1 parameter (project name) and returns either a static list of device addresses or nil.
   
 ___
-- <a name="add_static_hdr"></a><h4>[devices.add_static_list(project, list) (string, table(string)) => void](/README.md#add_static)</h4>
+<a name="add_static_hdr"></a><h4>- [devices.add_static_list(project, list) (string, table(string)) => void](/README.md#add_static)</h4>
   Takes 2 parameters (project name, device address list) and creates / updates a static device list.
 ___
-- <a name="clear_static_hdr"></a><h4>[devices.clear_static_list(project) (string) => void](/README.md#clear_static)</h4>
+<a name="clear_static_hdr"></a><h4>- [devices.clear_static_list(project) (string) => void](/README.md#clear_static)</h4>
   Takes 1 parameter (project name) and removes that project from the static device list.
 
 ### Dynamic functions:
 ___
-- <a name="get_dynamic_hdr"></a><h4>[devices.get_dynamic_projects() => table(string)](/README.md#get_dynamic)</h4>
+<a name="get_dynamic_hdr"></a><h4>- [devices.get_dynamic_projects() => table(string)](/README.md#get_dynamic)</h4>
   Returns a list containing every project in the dynamic device list.
 ___
-- <a name="chk_dynamic_prj_hdr"></a><h4>[devices.dynamic_project_exists(project) (string) => boolean](/README.md#chk_dynamic_prj)</h4>
+<a name="chk_dynamic_prj_hdr"></a><h4>- [devices.dynamic_project_exists(project) (string) => boolean](/README.md#chk_dynamic_prj)</h4>
   Takes 1 parameter (project name) and returns a boolean based on if the project exists.
 ___
-- <a name="add_dynamic_adr_hdr"></a><h4>[devices.add_dynamic_address(project, address) (string, string) => void](/README.md#add_dynamic_adr)</h4>
+<a name="add_dynamic_adr_hdr"></a><h4>- [devices.add_dynamic_address(project, address) (string, string) => void](/README.md#add_dynamic_adr)</h4>
   Takes 2 parameters (project name, address).
   Creates a new project if it doesn't exist.
   Then the address is added if it doesn't already exist.
 ___
-- <a name="remove_dynamic_adr_hdr"></a><h4>[devices.remove_dynamic_address(project, address) (string, string) => void](/README.md#remove_dynamic_adr)</h4>
+<a name="remove_dynamic_adr_hdr"></a><h4>- [devices.remove_dynamic_address(project, address) (string, string) => void](/README.md#remove_dynamic_adr)</h4>
   Takes 2 parameters (project name, address) and removes the address from the dynamic project list (If it exists)
 ___
-- <a name="add_dynamic_list_hdr"></a><h4>[devices.add_dynamic_list(project, list) (string, table(string)) => void](/README.md#add_dynamic_list)</h4>
+<a name="add_dynamic_list_hdr"></a><h4>- [devices.add_dynamic_list(project, list) (string, table(string)) => void](/README.md#add_dynamic_list)</h4>
   <p>Takes 2 parameters (project name, list of addresses)<br> 
   Creates a new project if it doesn't exist.
   Then each address is added if they doesn't already exist.<p>
 ___
-- <a name="get_dynamic_list_hdr"></a><h4>[devices.get_dynamic_list(project) (string) => table(string) / nil](/README.md#get_dynamic_list)</h4>
+
+<a name="get_dynamic_list_hdr"></a><h4>- [devices.get_dynamic_list(project) (string) => table(string) / nil](/README.md#get_dynamic_list) </h4>
   Takes 1 parameter (project name) and returns either a list of dynamic device addresses or nil
 ___
-- <a name="chk_dynamic_dev_hdr"></a><h4>[devices.dynamic_exists(project, address) (string, string) => boolean](/README.md#chk_dynamic_dev)</h4>
+<a name="chk_dynamic_dev_hdr"></a><h4>- [devices.dynamic_exists(project, address) (string, string) => boolean](/README.md#chk_dynamic_dev)</h4>
   Takes 2 parameters (project name, address) and returns a boolean based on if the address exists in that project.<br>
 ___
-- <a name="clear_dynamic_list_hdr"></a><h4>[devices.clear_dynamic_data(project) (string) => void](/README.md#clear_dynamic_list)</h4>
+<a name="clear_dynamic_list_hdr"></a><h4>- [devices.clear_dynamic_data(project) (string) => void](/README.md#clear_dynamic_list)</h4>
   Takes 1 parameter (project name) and clears all addresses within that project.<br>
 ___
-- <a name="clear_all_dynamic_hdr"></a><h4>[devices.clear_all_dynamic_data() => void](/README.md#clear_all_dynamic)</h4>
+<a name="clear_all_dynamic_hdr"></a><h4>- [devices.clear_all_dynamic_data() => void](/README.md#clear_all_dynamic)</h4>
   Removes every project that isn't included in that static project list from the dynamic project list.
   Clears every address in those projects that are included in the static project list.<br>
 ___
