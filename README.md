@@ -10,7 +10,9 @@
 ## List of functions:
 ### Utility functions:
 ___
-- #### [devices.scan_all_devices() => void](#scan_all){#scan_all_hdr}
+
+<a name="scan_all_hdr"></a><h4>- [devices.scan_all_devices() => void](/README.md#scan_all)</h4>
+
   <p>Iterates through every valid KNX device address with 3 seconds intervals and pings it.<br>
   If there is a response, it's saved to a list and then stored.<br>The 3 second delay is choosen in order to decrease the load on the KNX bus, the bus load increases by about 8% while the scan is active.<br><br>
   
@@ -19,21 +21,24 @@ ___
   **NOTE:** The total elapsed time between each ping alone is almost **54 hours**.
   Because of this, it's recommended to create a separate script for this function alone.</p>
 ___
-- #### [devices.byte4_uint_to_address(value) (4 byte UINT) => string / nil](#convert){#convert_hdr}
+
+<a name="convert_hdr"></a><h4>- [devices.byte4_uint_to_address(value) (4 byte UINT) => string / nil](/README.md#convert)</h4>
 
   <p>Takes 1 parameter (4 byte UNIT) and converts it into a valid KNX Device Address or nil (if the KNX Device Address is invalid).<br>
   The last 3 digits is used to specify how many digits there are for each address component (Area/Line/Device).<br><br>
   This function is meant to be used in a Event-based script, so that you can write the address value to an group address which will trigger the script.<br>
   For readability I recommend writing the address value as such: 15 15 255 2 2 3, instead of: 15152552223. ETS will automatically format the value.</p>
 ___
-- #### [devices.ping(project) (string) =>  table(string)](#ping){#ping_hdr}
+
+<a name="ping_hdr"></a><h4>- [devices.ping(project) (string) =>  table(string)](/README.md#ping)</h4>
 
   Pings every address from the choosen static project.
   Every successfull ping is added to a list.
   The list is saved as \<project\>_pinged.
   The list is also returned as a result.
 ___
-- #### [devices.restart(project) (string) => nil / boolean](#restart){#restart_hdr}
+
+<a name="restart_hdr"></a><h4>- [devices.restart(project) (string) => nil / boolean](/README.md#restart)</h4>
 
   Restarts every device in the choosen dynamic device list and returns either:<br>
   <p>
@@ -52,46 +57,49 @@ ___
 
 ### Static functions:
 ___
-- #### [devices.get_static_list(project) (string) => table(string) / nil](#get_static){#get_static_hdr}
+
+<a name="get_static_hdr"></a><h4>- [devices.get_static_list(project) (string) => table(string) / nil](/README.md#get_static)</h4>
   Takes 1 parameter (project name) and returns either a static list of device addresses or nil.
+  
 ___
-- #### [devices.add_static_list(project, list) (string, table(string)) => void](#add_static){#add_static_hdr}
+<a name="add_static_hdr"></a><h4>- [devices.add_static_list(project, list) (string, table(string)) => void](/README.md#add_static)</h4>
   Takes 2 parameters (project name, device address list) and creates / updates a static device list.
 ___
-- #### [devices.clear_static_list(project) (string) => void](#clear_static){#clear_static_hdr}
+<a name="clear_static_hdr"></a><h4>- [devices.clear_static_list(project) (string) => void](/README.md#clear_static)</h4>
   Takes 1 parameter (project name) and removes that project from the static device list.
 
 ### Dynamic functions:
 ___
-- #### [devices.get_dynamic_projects() => table(string)](#get_dynamic){#get_dynamic_hdr}
+<a name="get_dynamic_hdr"></a><h4>- [devices.get_dynamic_projects() => table(string)](/README.md#get_dynamic)</h4>
   Returns a list containing every project in the dynamic device list.
 ___
-- #### [devices.dynamic_project_exists(project) (string) => boolean](#chk_dynamic_prj){#chk_dynamic_prj_hdr}
+<a name="chk_dynamic_prj_hdr"></a><h4>- [devices.dynamic_project_exists(project) (string) => boolean](/README.md#chk_dynamic_prj)</h4>
   Takes 1 parameter (project name) and returns a boolean based on if the project exists.
 ___
-- #### [devices.add_dynamic_address(project, address) (string, string) => void](#add_dynamic_adr){#add_dynamic_adr_hdr}
+<a name="add_dynamic_adr_hdr"></a><h4>- [devices.add_dynamic_address(project, address) (string, string) => void](/README.md#add_dynamic_adr)</h4>
   Takes 2 parameters (project name, address).
   Creates a new project if it doesn't exist.
   Then the address is added if it doesn't already exist.
 ___
-- #### [devices.remove_dynamic_address(project, address) (string, string) => void](#remove_dynamic_adr){#remove_dynamic_adr_hdr}
+<a name="remove_dynamic_adr_hdr"></a><h4>- [devices.remove_dynamic_address(project, address) (string, string) => void](/README.md#remove_dynamic_adr)</h4>
   Takes 2 parameters (project name, address) and removes the address from the dynamic project list (If it exists)
 ___
-- #### [devices.add_dynamic_list(project, list) (string, table(string)) => void](#add_dynamic_list){#add_dynamic_list_hdr}
+<a name="add_dynamic_list_hdr"></a><h4>- [devices.add_dynamic_list(project, list) (string, table(string)) => void](/README.md#add_dynamic_list)</h4>
   <p>Takes 2 parameters (project name, list of addresses)<br> 
   Creates a new project if it doesn't exist.
   Then each address is added if they doesn't already exist.<p>
 ___
-- #### [devices.get_dynamic_list(project) (string) => table(string) / nil](#get_dynamic_list){#get_dynamic_list_hdr}
+
+<a name="get_dynamic_list_hdr"></a><h4>- [devices.get_dynamic_list(project) (string) => table(string) / nil](/README.md#get_dynamic_list) </h4>
   Takes 1 parameter (project name) and returns either a list of dynamic device addresses or nil
 ___
-- #### [devices.dynamic_exists(project, address) (string, string) => boolean](#chk_dynamic_dev){#chk_dynamic_dev_hdr}
+<a name="chk_dynamic_dev_hdr"></a><h4>- [devices.dynamic_exists(project, address) (string, string) => boolean](/README.md#chk_dynamic_dev)</h4>
   Takes 2 parameters (project name, address) and returns a boolean based on if the address exists in that project.<br>
 ___
-- #### [devices.clear_dynamic_data(project) (string) => void](#clear_dynamic_list){#clear_dynamic_list_hdr}
+<a name="clear_dynamic_list_hdr"></a><h4>- [devices.clear_dynamic_data(project) (string) => void](/README.md#clear_dynamic_list)</h4>
   Takes 1 parameter (project name) and clears all addresses within that project.<br>
 ___
-- #### [devices.clear_all_dynamic_data() => void](#clear_all_dynamic){#clear_all_dynamic_hdr}
+<a name="clear_all_dynamic_hdr"></a><h4>- [devices.clear_all_dynamic_data() => void](/README.md#clear_all_dynamic)</h4>
   Removes every project that isn't included in that static project list from the dynamic project list.
   Clears every address in those projects that are included in the static project list.<br>
 ___
@@ -114,13 +122,14 @@ ___
   devices = require('user.deviceAddressesLib')
   ```
 
-### [devices.scan_all_devices():](#scan_all_hdr){#scan_all}
+<a name="scan_all"></a><h3>[devices.scan_all_devices():](#scan_all_hdr)</h3>
+
 ___
   ```lua
   devices.scan_all_devices()
   ```
 
-### [devices.byte4_uint_to_address(value):](#convert_hdr){#convert}
+<a name="convert"></a><h4>[devices.byte4_uint_to_address(value):](/README.md#convert_hdr)</h4>
 
 ___
   ```lua
@@ -176,7 +185,7 @@ ___
     0.1.50
     3.10.80
 
-### [devices.ping(project):](#ping_hdr){#ping}
+<a name="ping"></a><h4>[devices.ping(project):](/README.md#ping_hdr)</h4>
 
 ___
   ```lua
@@ -194,8 +203,8 @@ ___
     '2.1.0',
     '2.2.0'
 
+<a name="restart"></a><h4>[devices.restart(project):](/README.md#restart_hdr)</h4>
 
-### [devices.restart(project):](#restart_hdr){#restart}
 ___
   ```lua
   project = 'project2_pinged'
@@ -216,7 +225,7 @@ ___
     'All devices have been restarted' or
     'Error, failed to restart some devices'
 
-### [devices.get_static_list(project)](#get_static_hdr){#get_static}
+<a name="get_static"></a><h4>[devices.get_static_list(project):](/README.md#get_static_hdr)</h4>
   
   <h6>Static projects</h6>
 
@@ -248,7 +257,7 @@ ___
     '1.1.0',
     '1.2.0'
 
-### [devices.add_static_list(project, list):](#add_static_hdr){#add_static}
+<a name="add_static"></a><h4>[devices.add_static_list(project, list):](/README.md#add_static_hdr)</h4>
   
   ```lua
   local projectName = 'project7'
@@ -302,7 +311,7 @@ ___
     '7.2.9',
     '7.2.10'
 
-### [devices.clear_static_list(project):](#clear_static_hdr){#clear_static}
+<a name="clear_static"></a><h4>[devices.clear_static_list(project):](/README.md#clear_static_hdr)</h4>
   
   ```lua
   local projectName = 'project7'
@@ -316,7 +325,7 @@ ___
 
     nil
 
-### [devices.get_dynamic_projects():](#get_dynamic_hdr){#get_dynamic}
+<a name="get_dynamic"></a><h4>[devices.get_dynamic_projects():](/README.md#get_dynamic_hdr)</h4>
 
 ___
   ```lua
@@ -334,7 +343,7 @@ ___
     'project5',
     'project6'
 
-### [devices.dynamic_project_exists():](#chk_dynamic_prj_hdr){#chk_dynamic_prj}
+<a name="chk_dynamic_prj"></a><h4>[devices.dynamic_project_exists():](/README.md#chk_dynamic_prj_hdr)</h4>
 
 ___
   ```lua
@@ -350,7 +359,7 @@ ___
     true
     false
 
-### [devices.add_dynamic_address():](#add_dynamic_adr_hdr){#add_dynamic_adr}
+<a name="add_dynamic_adr"></a><h4>[devices.add_dynamic_address():](/README.md#add_dynamic_adr_hdr)</h4>
 
 ___
   ```lua
@@ -360,7 +369,7 @@ ___
   devices.add_dynamic_address(project, address)
   ```
 
-### [devices.remove_dynamic_address():](#remove_dynamic_adr_hdr){#remove_dynamic_adr}
+<a name="remove_dynamic_adr"></a><h4>[devices.remove_dynamic_address():](/README.md#remove_dynamic_adr_hdr)</h4>
 
 ___
   ```lua
@@ -370,7 +379,7 @@ ___
   devices.remove_dynamic_address(project, address)
   ```
 
-### [devices.add_dynamic_list():](#add_dynamic_list_hdr){#add_dynamic_list}
+<a name="add_dynamic_list"></a><h4>[devices.add_dynamic_list():](/README.md#add_dynamic_list_hdr)</h4>
 
 ___
   ```lua
@@ -385,7 +394,7 @@ ___
   devices.add_dynamic_list(project, listOfAddresses)
   ```
 
-### [devices.get_dynamic_list():](#get_dynamic_list_hdr){#get_dynamic_list}
+<a name="get_dynamic_list"></a><h4>[devices.get_dynamic_list():](/README.md#get_dynamic_list_hdr)</h4>
 
 ___
   ```lua
@@ -411,7 +420,7 @@ ___
     '5.0.12',
     '5.0.13'
 
-### [devices.dynamic_exists():](#chk_dynamic_dev_hdr){#chk_dynamic_dev}
+<a name="chk_dynamic_dev"></a><h4>[devices.dynamic_exists():](/README.md#chk_dynamic_dev_hdr)</h4>
 
 ___
   ```lua
@@ -434,7 +443,7 @@ ___
     false
     false
 
-### [devices.clear_dynamic_data():](#clear_dynamic_list_hdr){#clear_dynamic_list}
+<a name="clear_dynamic_list"></a><h4>[devices.clear_dynamic_data():](/README.md#clear_dynamic_list_hdr)</h4>
 
 ___
   ```lua
@@ -442,7 +451,7 @@ ___
   devices.clear_dynamic_data(project)
   ```
 
-### [devices.clear_all_dynamic_data():](#clear_all_dynamic_hdr){#clear_all_dynamic}
+<a name="clear_all_dynamic"></a><h4>[devices.clear_all_dynamic_data():](/README.md#clear_all_dynamic_hdr)</h4>
 
 ___
   ```lua
