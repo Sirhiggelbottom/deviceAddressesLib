@@ -100,6 +100,14 @@ ___
 
 - [Here is a guide on how to get all of the KNX addresses from your project](./Initial%20startup%20guide.md)
 
+## Use Cases:
+
+- [Create a new static project list](./Use%20Cases/Initial_start.lua)
+
+- [Add a KNX device to a dynamic project list](./Use%20Cases/Add_KNX_Address_From_Event.lua)
+
+- [Restart devices from a dynamic device list](./Use%20Cases/Restart_Devices.lua)
+
 ## Examples:
 ***Required:***
   ```lua

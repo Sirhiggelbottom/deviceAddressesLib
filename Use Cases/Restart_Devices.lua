@@ -34,7 +34,7 @@ log('2nd restart attempt started')
 
 result = devices.restart(project)
 
-if not result then
+if result == nil then
   log("Error, couldn't create a new project, shutting down")
 elseif result then
   log('All KNX devices has been restarted')
