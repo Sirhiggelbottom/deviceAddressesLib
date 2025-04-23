@@ -95,6 +95,11 @@ ___
   Removes every project that isn't included in that static project list from the dynamic project list.
   Clears every address in those projects that are included in the static project list.<br>
 ___
+
+## Initial Startup Guide
+
+- [Here is a guide on how to get all of the KNX addresses from your project](./Initial%20startup%20guide.md)
+
 ## Examples:
 ***Required:***
   ```lua
