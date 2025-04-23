@@ -10,7 +10,9 @@
 ## List of functions:
 ### Utility functions:
 ___
-- #### [devices.scan_all_devices() => void](#scan_all){#scan_all_hdr}
+
+- <a name="scan_all_hdr"></a>[devices.scan_all_devices() => void](/README.md#scan_all)
+
   <p>Iterates through every valid KNX device address with 3 seconds intervals and pings it.<br>
   If there is a response, it's saved to a list and then stored.<br>The 3 second delay is choosen in order to decrease the load on the KNX bus, the bus load increases by about 8% while the scan is active.<br><br>
   
@@ -114,7 +116,7 @@ ___
   devices = require('user.deviceAddressesLib')
   ```
 
-### [devices.scan_all_devices():](#scan_all_hdr){#scan_all}
+<a name="scan_all"></a>[devices.scan_all_devices():](#scan_all_hdr)
 ___
   ```lua
   devices.scan_all_devices()
