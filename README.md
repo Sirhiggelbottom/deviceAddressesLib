@@ -2,12 +2,16 @@
 
 **This library contains functions and maps for KNX devices**
 
-### Definations
+### Definations:
 
-  <h6>static_project_devices:</h6> List of initial projects containing KNX Device Addresses.
-  <h6>dynamic_project_devices:</h6> List of added projects containing KNX Device Addresses.
+  ***static_project_devices:***
+  
+  List of initial projects containing KNX Device Addresses.
+  
+  ***dynamic_project_devices:*** 
+  
+  List of added projects containing KNX Device Addresses.
 
-## List of functions:
 ### Utility functions:
 ___
 
@@ -25,17 +29,21 @@ ___
 <a name="convert_hdr"></a><h4>- [devices.byte4_uint_to_address(value) (4 byte UINT) => string / nil](/README.md#convert)</h4>
 
   <p>Takes 1 parameter (4 byte UNIT) and converts it into a valid KNX Device Address or nil (if the KNX Device Address is invalid).<br>
-  The last 3 digits is used to specify how many digits there are for each address component (Area/Line/Device).<br><br>
-  This function is meant to be used in a Event-based script, so that you can write the address value to an group address which will trigger the script.<br>
-  For readability I recommend writing the address value as such: 15 15 255 2 2 3, instead of: 15152552223. ETS will automatically format the value.</p>
+  The last 3 digits is used to specify how many digits there are for each address component (Area/Line/Device).
+  
+  This function is meant to be used in a Event-based script, <br>
+  so that you can write the address value to an group address which will trigger the script.
+    
+  For readability I recommend writing the address value as such: 15 15 255 2 2 3, instead of: 15152552223.<br>ETS will automatically format the value.</p>
 ___
 
 <a name="ping_hdr"></a><h4>- [devices.ping(project) (string) =>  table(string)](/README.md#ping)</h4>
 
-  Pings every address from the choosen static project.
-  Every successfull ping is added to a list.
-  The list is saved as \<project\>_pinged.
-  The list is also returned as a result.
+  <p>Pings every address from the choosen static project.<br>
+  Every successfull ping is added to a list.<br>
+  The list is saved as: &lt;projectname&gt;_pinged. <br>
+  The list is also returned as a result.</p>
+    
 ___
 
 <a name="restart_hdr"></a><h4>- [devices.restart(project) (string) => nil / boolean](/README.md#restart)</h4>
@@ -77,16 +85,17 @@ ___
   Takes 1 parameter (project name) and returns a boolean based on if the project exists.
 ___
 <a name="add_dynamic_adr_hdr"></a><h4>- [devices.add_dynamic_address(project, address) (string, string) => void](/README.md#add_dynamic_adr)</h4>
-  Takes 2 parameters (project name, address).
-  Creates a new project if it doesn't exist.
-  Then the address is added if it doesn't already exist.
+  <p>Takes 2 parameters (project name, address).<br>
+  Creates a new project if it doesn't exist.<br>
+  Then the address is added if it doesn't already exist.</p>
 ___
+
 <a name="remove_dynamic_adr_hdr"></a><h4>- [devices.remove_dynamic_address(project, address) (string, string) => void](/README.md#remove_dynamic_adr)</h4>
   Takes 2 parameters (project name, address) and removes the address from the dynamic project list (If it exists)
 ___
 <a name="add_dynamic_list_hdr"></a><h4>- [devices.add_dynamic_list(project, list) (string, table(string)) => void](/README.md#add_dynamic_list)</h4>
   <p>Takes 2 parameters (project name, list of addresses)<br> 
-  Creates a new project if it doesn't exist.
+  Creates a new project if it doesn't exist. <br>
   Then each address is added if they doesn't already exist.<p>
 ___
 
@@ -100,9 +109,9 @@ ___
   Takes 1 parameter (project name) and clears all addresses within that project.<br>
 ___
 <a name="clear_all_dynamic_hdr"></a><h4>- [devices.clear_all_dynamic_data() => void](/README.md#clear_all_dynamic)</h4>
-  Removes every project that isn't included in that static project list from the dynamic project list.
-  Clears every address in those projects that are included in the static project list.<br>
+  Removes every project and associated addresses that isn't included in that static project list from the dynamic project list.
 ___
+
 
 ## Initial Startup Guide
 
